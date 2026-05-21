@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dana McKnight | Product Operations &amp; AI Strategy</title>
+    <meta name="description" content="Senior Director of Product Operations. Building AI-native operating models for product organizations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark:       #070B14;
+            --navy:       #0D1526;
+            --navy-mid:   #132040;
+            --blue:       #2563EB;
+            --blue-light: #3B82F6;
+            --cyan:       #06B6D4;
+            --white:      #FFFFFF;
+            --off-white:  #F8FAFC;
+            --gray-100:   #F1F5F9;
+            --gray-200:   #E2E8F0;
+            --gray-400:   #94A3B8;
+            --gray-500:   #64748B;
+            --gray-700:   #334155;
+            --gray-800:   #1E293B;
+            --text:       #1E293B;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* ── NAV ───────────────────────────────────────── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 0 2.5rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        nav.scrolled {
+            background: rgba(7,11,20,0.96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 1px 0 rgba(255,255,255,0.07);
+        }
+        .nav-logo {
+            font-size: 1.0625rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.025em;
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--cyan); }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #fff; }
+        .nav-cta {
+            background: var(--blue) !important;
+            color: #fff !important;
+            padding: 0.45rem 1.1rem !important;
+            border-radius: 6px !important;
+            font-weight: 600 !important;
+        }
+        .nav-cta:hover { background: var(--blue-light) !important; }
+
+        /* ── HERO ──────────────────────────────────────── */
+        .hero {
+            min-height: 100vh;
+            background: var(--dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 2.5rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%; right: -10%;
+            width: 60%; height: 80%;
+            background: radial-gradient(ellipse, rgba(37,99,235,0.13) 0%, transparent 68%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: -5%;
+            width: 45%; height: 55%;
+            background: radial-gradient(ellipse, rgba(6,182,212,0.08) 0%, transparent 68%);
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-eyebrow {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-size: clamp(3.25rem, 7.5vw, 5.75rem);
+            font-weight: 900;
+            line-height: 1.04;
+            letter-spacing: -0.035em;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #3B82F6 30%, #06B6D4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.1875rem);
+            color: rgba(255,255,255,0.58);
+            line-height: 1.75;
+            max-width: 570px;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--blue);
+            color: #fff;
+            padding: 0.875rem 1.875rem;
+            border-radius: 8px;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); }
+        .btn-outline {
+            border: 1.5px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.82);
+            padding: 0.875rem 1.875rem;
+            border-radius: 8px;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: border-color 0.2s, color 0.2s, transform 0.15s;
+        }
+        .btn-outline:hover {
+            border-color: rgba(255,255,255,0.45);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.28);
+            font-size: 0.6875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.85; } }
+
+        /* ── SECTION COMMON ────────────────────────────── */
+        section { padding: 6rem 2.5rem; }
+        .section-inner { max-width: 1100px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 0.875rem;
+        }
+        .section-label.light { color: var(--cyan); }
+        h2 {
+            font-size: clamp(2.125rem, 4.5vw, 3.125rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.13;
+            margin-bottom: 1rem;
+        }
+        .section-sub {
+            font-size: 1.0625rem;
+            color: var(--gray-500);
+            max-width: 560px;
+            line-height: 1.75;
+        }
+        .section-sub.light { color: rgba(255,255,255,0.5); }
+
+        /* ── PROBLEM ───────────────────────────────────── */
+        .problem { background: var(--off-white); }
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin: 3rem 0 1.5rem;
+        }
+        .problem-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1.625rem;
+            position: relative;
+        }
+        .problem-card::after {
+            content: 'SILOED';
+            position: absolute;
+            top: 1rem; right: 1rem;
+            font-size: 0.625rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            color: #EF4444;
+            background: #FEF2F2;
+            padding: 0.175rem 0.5rem;
+            border-radius: 4px;
+        }
+        .problem-card-icon {
+            width: 38px; height: 38px;
+            background: var(--gray-100);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.875rem;
+            color: var(--gray-500);
+        }
+        .problem-card h3 {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--gray-800);
+        }
+        .problem-card p { font-size: 0.8125rem; color: var(--gray-500); }
+        .problem-callout {
+            background: var(--gray-800);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 1.625rem 1.875rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+        .problem-callout-icon {
+            width: 44px; height: 44px;
+            background: rgba(239,68,68,0.14);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #F87171;
+            margin-top: 0.125rem;
+        }
+        .problem-callout p {
+            font-size: 1rem;
+            line-height: 1.65;
+            color: rgba(255,255,255,0.8);
+        }
+        .problem-callout strong { color: #fff; }
+
+        /* ── OPERATING MODEL ───────────────────────────── */
+        .model { background: var(--dark); color: #fff; }
+        .model h2 { color: #fff; }
+        .model-diagram {
+            margin: 3rem 0;
+            display: grid;
+            grid-template-columns: 1fr 48px 1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .model-inputs { display: grid; gap: 0.875rem; }
+        .model-input {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 10px;
+            padding: 0.875rem 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .input-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--cyan);
+            flex-shrink: 0;
+        }
+        .model-input span {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.78);
+        }
+        .model-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.375rem;
+            color: rgba(255,255,255,0.25);
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+        .model-arrow svg { color: var(--blue-light); }
+        .model-right { display: flex; flex-direction: column; gap: 1.25rem; }
+        .model-core {
+            background: linear-gradient(135deg, rgba(37,99,235,0.18), rgba(6,182,212,0.12));
+            border: 1px solid rgba(59,130,246,0.28);
+            border-radius: 16px;
+            padding: 1.875rem 2rem;
+            text-align: center;
+        }
+        .model-core-label {
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 0.625rem;
+        }
+        .model-core h3 {
+            font-size: 1.375rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.375rem;
+        }
+        .model-core p { font-size: 0.8125rem; color: rgba(255,255,255,0.45); }
+        .model-down {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            color: rgba(255,255,255,0.28);
+            font-size: 0.75rem;
+        }
+        .model-output {
+            background: rgba(6,182,212,0.07);
+            border: 1px solid rgba(6,182,212,0.18);
+            border-radius: 10px;
+            padding: 1.125rem 1.375rem;
+        }
+        .model-output-label {
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 0.375rem;
+        }
+        .model-output p { font-size: 0.875rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+
+        /* ── HOW IT WORKS ──────────────────────────────── */
+        .how { background: var(--white); }
+        .how-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2.25rem;
+            margin-top: 3rem;
+        }
+        .how-step-num {
+            font-size: 3.25rem;
+            font-weight: 900;
+            color: var(--gray-100);
+            line-height: 1;
+            letter-spacing: -0.045em;
+            margin-bottom: 0.625rem;
+        }
+        .how-step-bar {
+            width: 28px; height: 3px;
+            background: var(--blue);
+            border-radius: 2px;
+            margin-bottom: 0.875rem;
+        }
+        .how-step h3 {
+            font-size: 1.0625rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 0.375rem;
+        }
+        .how-step p { font-size: 0.9rem; color: var(--gray-500); line-height: 1.65; }
+        .how-note {
+            background: var(--gray-800);
+            border-radius: 12px;
+            padding: 1.375rem 1.75rem;
+            margin-top: 3rem;
+            display: flex;
+            gap: 1.125rem;
+            align-items: flex-start;
+        }
+        .how-note svg { color: var(--cyan); flex-shrink: 0; margin-top: 1px; }
+        .how-note p { font-size: 0.9375rem; color: rgba(255,255,255,0.7); line-height: 1.65; }
+        .how-note strong { color: #fff; }
+
+        /* ── OUTCOMES ──────────────────────────────────── */
+        .outcomes { background: var(--off-white); }
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.375rem;
+            margin-top: 3rem;
+        }
+        .outcome-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1.625rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .outcome-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.07); transform: translateY(-2px); }
+        .outcome-icon {
+            width: 42px; height: 42px;
+            background: linear-gradient(135deg, rgba(37,99,235,0.09), rgba(6,182,212,0.09));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.125rem;
+            color: var(--blue);
+        }
+        .outcome-card h3 {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 0.375rem;
+        }
+        .outcome-card p { font-size: 0.875rem; color: var(--gray-500); line-height: 1.65; }
+
+        /* ── WORK PORTFOLIO ────────────────────────────── */
+        .portfolio { background: var(--white); }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 1.375rem;
+            margin-top: 3rem;
+        }
+        .portfolio-card {
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1.625rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .portfolio-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.06); transform: translateY(-2px); }
+        .portfolio-card.featured {
+            border-color: rgba(37,99,235,0.28);
+            background: linear-gradient(135deg, rgba(37,99,235,0.03), rgba(6,182,212,0.02));
+        }
+        .card-tag {
+            display: inline-block;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--blue);
+            background: rgba(37,99,235,0.08);
+            padding: 0.225rem 0.575rem;
+            border-radius: 4px;
+            margin-bottom: 0.875rem;
+        }
+        .portfolio-card.featured .card-tag {
+            color: var(--cyan);
+            background: rgba(6,182,212,0.1);
+        }
+        .portfolio-card h3 {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 0.4rem;
+            line-height: 1.35;
+        }
+        .portfolio-card p { font-size: 0.875rem; color: var(--gray-500); line-height: 1.65; }
+
+        /* ── ABOUT ─────────────────────────────────────── */
+        .about { background: var(--dark); color: #fff; }
+        .about h2 { color: #fff; }
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+        .about-text p {
+            font-size: 1.0625rem;
+            line-height: 1.78;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 1.125rem;
+        }
+        .about-text p:last-child { margin-bottom: 0; }
+        .about-text strong { color: #fff; }
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+        .about-stat {
+            background: rgba(255,255,255,0.045);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 12px;
+            padding: 1.375rem;
+        }
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 0.375rem;
+            background: linear-gradient(135deg, #3B82F6, #06B6D4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.4); line-height: 1.4; }
+
+        /* ── BUILT WITH AI ─────────────────────────────── */
+        .ai-proof {
+            background: var(--navy);
+            color: #fff;
+            border-top: 1px solid rgba(37,99,235,0.18);
+        }
+        .ai-proof h2 { color: #fff; }
+        .ai-proof-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+        .ai-proof-text p {
+            font-size: 1.0625rem;
+            line-height: 1.78;
+            color: rgba(255,255,255,0.62);
+            margin-bottom: 1.125rem;
+        }
+        .ai-proof-text p:last-of-type { margin-bottom: 1.5rem; }
+        .ai-proof-text strong { color: #fff; }
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(6,182,212,0.1);
+            border: 1px solid rgba(6,182,212,0.22);
+            border-radius: 8px;
+            padding: 0.7rem 1.125rem;
+        }
+        .ai-badge span {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--cyan);
+        }
+        .terminal {
+            background: #0A0E1A;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            font-size: 0.8125rem;
+        }
+        .terminal-bar {
+            background: rgba(255,255,255,0.04);
+            padding: 0.7rem 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .t-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .t-dot-r { background: #FF5F57; }
+        .t-dot-y { background: #FFBD2E; }
+        .t-dot-g { background: #28C840; }
+        .terminal-title {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.28);
+            margin-left: auto;
+            font-family: 'Inter', sans-serif;
+        }
+        .terminal-body {
+            padding: 1.375rem 1.5rem;
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+            line-height: 2;
+        }
+        .t-line { display: flex; gap: 0.625rem; }
+        .t-prompt { color: var(--cyan); flex-shrink: 0; }
+        .t-user { color: rgba(255,255,255,0.82); }
+        .t-claude { color: #94A3B8; font-style: italic; }
+        .t-action { color: #34D399; }
+        .t-gap { height: 0.5rem; }
+
+        /* ── CONTACT ───────────────────────────────────── */
+        .contact {
+            background: var(--dark);
+            text-align: center;
+            padding-bottom: 7rem;
+        }
+        .contact h2 { color: #fff; margin: 0 auto 1.25rem; max-width: 560px; }
+        .contact p {
+            color: rgba(255,255,255,0.5);
+            font-size: 1.0625rem;
+            max-width: 480px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.72;
+        }
+        .contact-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+        /* ── FOOTER ────────────────────────────────────── */
+        footer {
+            background: #050810;
+            padding: 2rem 2.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        footer p { font-size: 0.8rem; color: rgba(255,255,255,0.22); }
+        footer a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: rgba(255,255,255,0.65); }
+
+        /* ── FADE-UP ANIMATION ─────────────────────────── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── RESPONSIVE ────────────────────────────────── */
+        @media (max-width: 820px) {
+            section { padding: 4.5rem 1.5rem; }
+            nav { padding: 0 1.5rem; }
+            .nav-links { display: none; }
+            .hero { padding: 7rem 1.5rem 4rem; }
+            .model-diagram { grid-template-columns: 1fr; }
+            .model-arrow { display: none; }
+            .about-layout, .ai-proof-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav id="nav">
+    <a href="#" class="nav-logo">Dana<span>.</span></a>
+    <ul class="nav-links">
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#model">Operating Model</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+    <div class="hero-inner">
+        <p class="hero-eyebrow">Senior Director of Product Operations</p>
+        <h1>Product Ops<br>for the <span class="gradient-text">AI Era.</span></h1>
+        <p class="hero-sub">I build the operating infrastructure that lets product organizations move with confidence — aligning roadmaps, KPIs, development progress, and product health through intelligent, automated workflows.</p>
+        <div class="hero-actions">
+            <a href="#model" class="btn-primary">
+                See the Operating Model
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#contact" class="btn-outline">Get in Touch</a>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        Scroll
+    </div>
+</section>
+
+<!-- ── THE PROBLEM ── -->
+<section class="problem" id="problem">
+    <div class="section-inner">
+        <p class="section-label">The Problem</p>
+        <h2>Four critical inputs.<br>Four different places.</h2>
+        <p class="section-sub">Product teams spend enormous time chasing information instead of acting on it.</p>
+
+        <div class="problem-grid">
+            <div class="problem-card fade-up">
+                <div class="problem-card-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                </div>
+                <h3>Roadmap</h3>
+                <p>Strategy &amp; priorities</p>
+            </div>
+            <div class="problem-card fade-up">
+                <div class="problem-card-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                </div>
+                <h3>KPIs</h3>
+                <p>Expected impact &amp; timing</p>
+            </div>
+            <div class="problem-card fade-up">
+                <div class="problem-card-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3>Product Health</h3>
+                <p>Are we measuring right?</p>
+            </div>
+            <div class="problem-card fade-up">
+                <div class="problem-card-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                </div>
+                <h3>Dev Progress</h3>
+                <p>What's shipping &amp; when?</p>
+            </div>
+        </div>
+
+        <div class="problem-callout fade-up">
+            <div class="problem-callout-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            </div>
+            <p><strong>The result:</strong> Product Managers spend days each month manually aggregating context — and still present with gaps. Strategic decisions get made on stale data, misaligned signals, and competing versions of the deck.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ── THE OPERATING MODEL ── -->
+<section class="model" id="model">
+    <div class="section-inner">
+        <p class="section-label light">The Vision</p>
+        <h2>One intelligent layer.<br>Four inputs. One source of truth.</h2>
+        <p class="section-sub light">An AI orchestration layer that continuously pulls, normalizes, synthesizes, and delivers structured insight — automatically, on cadence.</p>
+
+        <div class="model-diagram fade-up">
+            <div class="model-inputs">
+                <div class="model-input"><div class="input-dot"></div><span>Roadmap</span></div>
+                <div class="model-input"><div class="input-dot"></div><span>KPIs &amp; Impact Targets</span></div>
+                <div class="model-input"><div class="input-dot"></div><span>Dev Progress</span></div>
+                <div class="model-input"><div class="input-dot"></div><span>Product Health</span></div>
+            </div>
+
+            <div class="model-arrow">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <span>feeds</span>
+            </div>
+
+            <div class="model-right">
+                <div class="model-core">
+                    <p class="model-core-label">AI Orchestration Layer</p>
+                    <h3>Synthesize. Detect. Deliver.</h3>
+                    <p>Gaps &nbsp;·&nbsp; Risks &nbsp;·&nbsp; Drift &nbsp;·&nbsp; Actions</p>
+                </div>
+                <div class="model-down">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                    <span style="font-size:0.75rem; color:rgba(255,255,255,0.28);">delivered automatically</span>
+                </div>
+                <div class="model-output">
+                    <p class="model-output-label">Output</p>
+                    <p>Synthesized product health report → right people, right cadence, flagged actions included.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how" id="how">
+    <div class="section-inner">
+        <p class="section-label">How It Works</p>
+        <h2>Agent workflow:<br>from source to signal.</h2>
+        <p class="section-sub">Four steps. Fully automated. Stack-agnostic by design.</p>
+
+        <div class="how-steps">
+            <div class="how-step fade-up">
+                <div class="how-step-num">01</div>
+                <div class="how-step-bar"></div>
+                <h3>Pull</h3>
+                <p>Agents poll source systems on a defined cadence — roadmap tools, PM trackers, data dashboards, health scorecards.</p>
+            </div>
+            <div class="how-step fade-up">
+                <div class="how-step-num">02</div>
+                <div class="how-step-bar"></div>
+                <h3>Normalize</h3>
+                <p>Raw outputs are parsed, structured, and mapped to a common schema regardless of source format.</p>
+            </div>
+            <div class="how-step fade-up">
+                <div class="how-step-num">03</div>
+                <div class="how-step-bar"></div>
+                <h3>Synthesize</h3>
+                <p>LLM layer identifies gaps, risks, drift from targets, and notable changes since last cycle.</p>
+            </div>
+            <div class="how-step fade-up">
+                <div class="how-step-num">04</div>
+                <div class="how-step-bar"></div>
+                <h3>Deliver</h3>
+                <p>Structured summary pushed to shared surface — Slack, email digest, or live dashboard — with flagged actions.</p>
+            </div>
+        </div>
+
+        <div class="how-note fade-up">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <p><strong>Design principle:</strong> Stack-agnostic by intent. The pattern works regardless of which roadmap tool, project tracker, or data platform the org uses.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ── WHAT GOOD LOOKS LIKE ── -->
+<section class="outcomes" id="outcomes">
+    <div class="section-inner">
+        <p class="section-label">What Good Looks Like</p>
+        <h2>Measurable outcomes<br>across the product org.</h2>
+        <p class="section-sub">The shift: from reactive aggregation to proactive insight — at any scale.</p>
+
+        <div class="outcomes-grid">
+            <div class="outcome-card fade-up">
+                <div class="outcome-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                </div>
+                <h3>Roadmap Confidence</h3>
+                <p>Leadership reviews start with shared, current-state context — not competing versions of the deck.</p>
+            </div>
+            <div class="outcome-card fade-up">
+                <div class="outcome-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                </div>
+                <h3>KPI Accountability</h3>
+                <p>Impact targets linked to roadmap items. Variance from expected trajectory visible in real time.</p>
+            </div>
+            <div class="outcome-card fade-up">
+                <div class="outcome-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <h3>Faster Escalation</h3>
+                <p>Risks surface before the review — not during it. PMs spend time on decisions, not data gathering.</p>
+            </div>
+            <div class="outcome-card fade-up">
+                <div class="outcome-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                </div>
+                <h3>Engineering Alignment</h3>
+                <p>Dev status becomes part of the product signal layer — not a separate conversation happening elsewhere.</p>
+            </div>
+            <div class="outcome-card fade-up">
+                <div class="outcome-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                </div>
+                <h3>PM Leverage</h3>
+                <p>Freed from aggregation, PMs operate as strategic partners — not report compilers.</p>
+            </div>
+            <div class="outcome-card fade-up">
+                <div class="outcome-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                </div>
+                <h3>Scalable Cadence</h3>
+                <p>Same architecture, different scope. Works for one team or twenty — no manual overhead added.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── WORK PORTFOLIO ── -->
+<section class="portfolio" id="work">
+    <div class="section-inner">
+        <p class="section-label">Selected Work</p>
+        <h2>Built. Shipped. Running.</h2>
+        <p class="section-sub">Operating infrastructure I've designed and implemented across product organizations — the evidence base behind the model.</p>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-card featured fade-up">
+                <span class="card-tag">AI Strategy</span>
+                <h3>AI-First Product Operating Model</h3>
+                <p>End-to-end proposal for an AI agent workflow connecting roadmap, KPIs, dev progress, and product health into a single automated synthesis layer. Includes architecture, change management plan, and rollout strategy.</p>
+            </div>
+            <div class="portfolio-card fade-up">
+                <span class="card-tag">Governance</span>
+                <h3>Product Development Governance Framework</h3>
+                <p>Built governance infrastructure from scratch: review board charter, decision escalation process, RAID log template, and full change management rollout plan across a multi-team product org.</p>
+            </div>
+            <div class="portfolio-card fade-up">
+                <span class="card-tag">Launch Readiness</span>
+                <h3>Pipeline &amp; Launch Readiness System</h3>
+                <p>Designed ops-ready and sell-ready stage-gate frameworks covering 80+ launch criteria. Implemented across product and GTM teams with training decks and live checklists.</p>
+            </div>
+            <div class="portfolio-card fade-up">
+                <span class="card-tag">Planning</span>
+                <h3>Quarterly Planning Framework</h3>
+                <p>End-to-end quarterly planning process: from strategic intent to brainstorm facilitation to readout template. Includes retro integration loop and full process revamp methodology.</p>
+            </div>
+            <div class="portfolio-card fade-up">
+                <span class="card-tag">Operations</span>
+                <h3>Product Operating Manual</h3>
+                <p>Comprehensive team playbook covering how the product org runs — decision rights, operating cadences, communication standards, escalation paths, and meeting norms.</p>
+            </div>
+            <div class="portfolio-card fade-up">
+                <span class="card-tag">Governance</span>
+                <h3>New Opportunity Assessment Process</h3>
+                <p>Structured intake and scoring methodology for evaluating new product opportunities against strategic criteria, with a simplified executive view for CPO-level decisions.</p>
+            </div>
+            <div class="portfolio-card fade-up">
+                <span class="card-tag">Operations</span>
+                <h3>Rhythm of Business</h3>
+                <p>Operating calendar and standard meetings framework: exec reporting cadence, product review structure, planning cycles, and cross-functional sync design.</p>
+            </div>
+            <div class="portfolio-card featured fade-up">
+                <span class="card-tag">AI Strategy</span>
+                <h3>AI Executive Strategy Brief</h3>
+                <p>C-suite brief on AI integration across a product organization — covering automation opportunities, risk posture, team enablement approach, and phased implementation roadmap.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about" id="about">
+    <div class="section-inner">
+        <p class="section-label light">About</p>
+        <h2>Built on systems thinking.<br>Measured in org velocity.</h2>
+
+        <div class="about-layout">
+            <div class="about-text">
+                <p>I'm a <strong>Senior Director of Product Operations</strong> who builds Product Ops infrastructure from scratch in scaling organizations — operating models, governance cadences, health scorecards, planning processes, career ladders.</p>
+                <p>I serve as <strong>Chief of Staff to the CPO</strong> and take on adjacent functions — User Research, AI operationalization, org-wide operating models — when they need an operator who thinks in systems, not just executes tasks.</p>
+                <p>My value is turning Product Ops from a coordinator function into a <strong>strategic partner to the C-suite</strong> — through systems design, executive communication, and cross-functional influence without authority.</p>
+                <p>I don't just advise on AI in product. I'm actively building with it — and the operating model and the site you're reading are the same proof of concept.</p>
+            </div>
+            <div class="about-stats">
+                <div class="about-stat">
+                    <div class="stat-num">0→1</div>
+                    <div class="stat-label">Product Ops infrastructure built from scratch</div>
+                </div>
+                <div class="about-stat">
+                    <div class="stat-num">CPO</div>
+                    <div class="stat-label">Chief of Staff function — C-suite stakeholders served</div>
+                </div>
+                <div class="about-stat">
+                    <div class="stat-num">Full<br>Stack</div>
+                    <div class="stat-label">Governance · Planning · Launch · AI</div>
+                </div>
+                <div class="about-stat">
+                    <div class="stat-num">AI&#8209;Native</div>
+                    <div class="stat-label">Not a future state — a current practice</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── BUILT WITH AI ── -->
+<section class="ai-proof" id="built-with-ai">
+    <div class="section-inner">
+        <p class="section-label light">Proof of Concept</p>
+        <h2>This site was built<br>with Claude.</h2>
+
+        <div class="ai-proof-layout">
+            <div class="ai-proof-text">
+                <p>The operating model you just read isn't hypothetical. <strong>This website is the proof of concept.</strong></p>
+                <p>The brief was written in conversation. Content was extracted from real work artifacts — decks, briefs, frameworks built over years of practice. The code was generated, reviewed, and refined through AI-assisted iteration using <strong>Claude Code</strong>, Anthropic's AI coding tool.</p>
+                <p>From brief to deployed site: <strong>hours, not weeks.</strong> That's the leverage point. That's what it looks like when an operator puts AI in the workflow instead of just talking about it.</p>
+                <p>The thesis of the operating model and the method of building this site are the same thing: <strong>AI as a connective layer — not a replacement for expertise, but a multiplier of it.</strong></p>
+                <div class="ai-badge">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                    <span>Built with Claude Code by Anthropic</span>
+                </div>
+            </div>
+
+            <div class="terminal">
+                <div class="terminal-bar">
+                    <div class="t-dot t-dot-r"></div>
+                    <div class="t-dot t-dot-y"></div>
+                    <div class="t-dot t-dot-g"></div>
+                    <span class="terminal-title">Claude Code — Session Excerpt</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="t-line">
+                        <span class="t-prompt">Dana:</span>
+                        <span class="t-user">Using the PowerPoint we created, I want to build a website…</span>
+                    </div>
+                    <div class="t-line">
+                        <span class="t-prompt"></span>
+                        <span class="t-user">goals: show product ops + AI knowledge, and prove it by building the site with AI</span>
+                    </div>
+                    <div class="t-gap"></div>
+                    <div class="t-line">
+                        <span class="t-prompt">Claude:</span>
+                        <span class="t-claude">Reading AI_First_Product_Operating_Model.pptx…</span>
+                    </div>
+                    <div class="t-line">
+                        <span class="t-prompt"></span>
+                        <span class="t-action">✓ Extracted 9 slides of content</span>
+                    </div>
+                    <div class="t-line">
+                        <span class="t-prompt"></span>
+                        <span class="t-action">✓ Scanned 80+ work artifacts</span>
+                    </div>
+                    <div class="t-line">
+                        <span class="t-prompt"></span>
+                        <span class="t-action">✓ Built site architecture</span>
+                    </div>
+                    <div class="t-line">
+                        <span class="t-prompt"></span>
+                        <span class="t-action">✓ Generated, QA'd, deployed</span>
+                    </div>
+                    <div class="t-gap"></div>
+                    <div class="t-line">
+                        <span class="t-prompt">Dana:</span>
+                        <span class="t-user">That's the point. Same thesis, same method.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+    <div class="section-inner">
+        <p class="section-label light">Let's Build It</p>
+        <h2>The operating model is ready.<br>The technology is ready.</h2>
+        <p>Product Ops just needs to lead it. If you're building a product organization that needs this kind of infrastructure — let's talk.</p>
+        <div class="contact-actions">
+            <a href="mailto:dmmcknight@gmail.com" class="btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                Email Dana
+            </a>
+            <!-- TODO: Replace href with your actual LinkedIn URL -->
+            <a href="https://linkedin.com/in/danamcknight" target="_blank" rel="noopener" class="btn-outline">
+                LinkedIn
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <p>© 2026 Dana McKnight &nbsp;·&nbsp; <a href="mailto:dmmcknight@gmail.com">dmmcknight@gmail.com</a> &nbsp;·&nbsp; Built with <a href="https://claude.ai/code" target="_blank" rel="noopener">Claude Code</a></p>
+</footer>
+
+<script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
